@@ -1,0 +1,1 @@
+{ "name": "mod-manager", "version": "0.1.0", "description": "Sidebar to enable and disable mods, opened with /mods.", "types": "./types/index.d.ts" }

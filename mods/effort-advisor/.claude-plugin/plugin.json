@@ -1,0 +1,1 @@
+{ "name": "effort-advisor", "version": "0.1.0", "description": "Avalia cada prompt com o modelo Sonnet (ANTHROPIC_DEFAULT_SONNET_MODEL) e pergunta se o effort level deve mudar." }

@@ -1,0 +1,1 @@
+{ "name": "input-router", "version": "0.1.0", "license": "MIT", "description": "Blocks Reads of files over 2000 tokens and routes them to a Haiku subagent that reads the whole file and summarizes what matters." }

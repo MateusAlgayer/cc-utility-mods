@@ -1,0 +1,10 @@
+{
+  "name": "cc-utility-mods",
+  "description": "Mods utilitários para o Claude Code",
+  "owner": { "name": "Mateus Algayer" },
+  "plugins": [
+    { "name": "mod-manager", "source": "./mods/mod-manager", "description": "Sidebar para ativar e desativar mods, aberta com /mods." },
+    { "name": "effort-advisor", "source": "./mods/effort-advisor", "description": "Avalia cada prompt com o Sonnet e pergunta se o effort level deve mudar." },
+    { "name": "input-router", "source": "./mods/input-router", "description": "Bloqueia Reads de arquivos acima de 2000 tokens e roteia para um subagente Haiku que resume." }
+  ]
+}
