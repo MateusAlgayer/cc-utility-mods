@@ -44,25 +44,9 @@ Substitua `<mod>` por `mod-manager`, `effort-advisor` ou `input-router`. Depois,
 
 Para atualizar: `claude plugin update <mod>`.
 
-## Adicionar um mod ao repositório
+## Contribuindo
 
-Cada mod fica em `mods/<nome>/`:
-
-```
-mods/<nome>/
-├── .claude-plugin/plugin.json
-└── hooks/
-    ├── hooks.json
-    └── register.tsx
-```
-
-Liste o mod em `.claude-plugin/marketplace.json`:
-
-```json
-{ "name": "<nome>", "source": "./mods/<nome>", "description": "..." }
-```
-
-Para testar localmente: `claude --plugin-dir mods/<nome>`. Para validar: `claude plugin validate .`.
+Veja [CONTRIBUTING.md](CONTRIBUTING.md) para saber como adicionar um mod.
 
 ## Licença
 
