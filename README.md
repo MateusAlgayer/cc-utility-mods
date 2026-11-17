@@ -9,6 +9,7 @@ Marketplace de mods utilitários para o Claude Code.
 | [`mod-manager`](mods/mod-manager) | Sidebar para ativar e desativar mods, aberta com `/mods`. |
 | [`effort-advisor`](mods/effort-advisor) | Avalia cada prompt com o Sonnet e pergunta se o effort level deve mudar. |
 | [`input-router`](mods/input-router) | Bloqueia leituras de arquivos grandes e as encaminha para um subagente Haiku que resume o conteúdo. |
+| [`handoff`](mods/handoff) | `/handoff` gera um handoff da sessão (intenção inicial, skills, arquivos lidos) e permite copiá-lo ou abrir uma nova sessão com ele; avisa quando o contexto passa de 70%. |
 
 ## Instalar o marketplace
 
@@ -40,7 +41,7 @@ No shell:
 claude plugin install <mod> --marketplace MateusAlgayer/cc-utility-mods
 ```
 
-Substitua `<mod>` por `mod-manager`, `effort-advisor` ou `input-router`. Depois, rode `/reload-plugins` para carregar o mod na sessão atual.
+Substitua `<mod>` por `mod-manager`, `effort-advisor`, `input-router` ou `handoff`. Depois, rode `/reload-plugins` para carregar o mod na sessão atual.
 
 Para atualizar: `claude plugin update <mod>`.
 

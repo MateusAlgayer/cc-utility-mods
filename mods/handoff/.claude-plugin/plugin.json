@@ -1,0 +1,1 @@
+{ "name": "handoff", "version": "0.1.0", "description": "Gera um handoff da sessão (/handoff) e avisa quando o contexto passa de 70%. Permite copiar o handoff ou abrir uma nova sessão com ele." }
