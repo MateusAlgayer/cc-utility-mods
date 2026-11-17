@@ -1,9 +1,13 @@
 # Input Router
 
-Blocks `Read` calls whose content exceeds ~2000 tokens (estimated at 4 characters per token, honoring `offset`/`limit`) and routes them to a subagent running the model in `ANTHROPIC_DEFAULT_HAIKU_MODEL` (falls back to `haiku`) (`input-router:reader`). The subagent reads the whole file in chunks and returns a summary of what matters, which the main model receives in place of the raw file. The subagent inherits the main task's effort level. Images, PDFs and notebooks are not routed; reading a smaller range (under ~2000 tokens) goes straight through.
+Bloqueia chamadas `Read` cujo conteúdo passa de ~2000 tokens (estimados em 4 caracteres por token, respeitando `offset`/`limit`) e as encaminha para um subagente (`input-router:reader`) que usa o modelo de `ANTHROPIC_DEFAULT_HAIKU_MODEL` (com `haiku` como padrão). O subagente lê o arquivo inteiro em partes e devolve um resumo do que importa, que o modelo principal recebe no lugar do arquivo bruto. O subagente herda o nível de effort da tarefa principal.
 
-## Install
+Imagens, PDFs e notebooks não são encaminhados. Leituras menores (abaixo de ~2000 tokens) passam direto.
+
+## Instalação
 
 ```
 /plugin install input-router --marketplace MateusAlgayer/cc-utility-mods
 ```
+
+Se ainda não adicionou o marketplace, veja o [README principal](../../README.md#instalar-o-marketplace).

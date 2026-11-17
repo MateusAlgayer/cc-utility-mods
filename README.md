@@ -1,10 +1,34 @@
 # cc-utility-mods
 
-Mods utilitários para o Claude Code.
+Marketplace de mods utilitários para o Claude Code.
 
-## Instalar
+## Mods disponíveis
+
+| Mod | Descrição |
+| --- | --- |
+| [`mod-manager`](mods/mod-manager) | Sidebar para ativar e desativar mods, aberta com `/mods`. |
+| [`effort-advisor`](mods/effort-advisor) | Avalia cada prompt com o Sonnet e pergunta se o effort level deve mudar. |
+| [`input-router`](mods/input-router) | Bloqueia leituras de arquivos grandes e as encaminha para um subagente Haiku que resume o conteúdo. |
+
+## Instalar o marketplace
 
 No prompt do Claude Code:
+
+```
+/plugin marketplace add MateusAlgayer/cc-utility-mods
+```
+
+No shell:
+
+```
+claude plugin marketplace add MateusAlgayer/cc-utility-mods
+```
+
+Para listar os mods disponíveis, use `/plugin` e abra a aba de marketplaces.
+
+## Instalar um mod
+
+Com o marketplace adicionado, no prompt do Claude Code:
 
 ```
 /plugin install <mod> --marketplace MateusAlgayer/cc-utility-mods
@@ -16,12 +40,30 @@ No shell:
 claude plugin install <mod> --marketplace MateusAlgayer/cc-utility-mods
 ```
 
-## Adicionar um mod
+Substitua `<mod>` por `mod-manager`, `effort-advisor` ou `input-router`. Depois, rode `/reload-plugins` para carregar o mod na sessão atual.
 
-Cada mod fica em `mods/<nome>/` (`.claude-plugin/plugin.json`, `hooks/hooks.json`, `hooks/register.tsx`) e é listado em `.claude-plugin/marketplace.json`:
+Para atualizar: `claude plugin update <mod>`.
 
-```json
-{ "name": "<nome>", "source": "./mods/<nome>" }
+## Adicionar um mod ao repositório
+
+Cada mod fica em `mods/<nome>/`:
+
+```
+mods/<nome>/
+├── .claude-plugin/plugin.json
+└── hooks/
+    ├── hooks.json
+    └── register.tsx
 ```
 
-Desenvolvimento local: `claude --plugin-dir mods/<nome>`.
+Liste o mod em `.claude-plugin/marketplace.json`:
+
+```json
+{ "name": "<nome>", "source": "./mods/<nome>", "description": "..." }
+```
+
+Para testar localmente: `claude --plugin-dir mods/<nome>`. Para validar: `claude plugin validate .`.
+
+## Licença
+
+Veja [LICENSE](LICENSE).
