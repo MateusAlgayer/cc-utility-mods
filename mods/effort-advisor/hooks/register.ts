@@ -26,10 +26,11 @@ const parse = (text: string): { level: ModelEffort; reason: string } | null => {
 export const register: Register = on => {
   let current: ModelEffort | undefined // último effort visto no loop principal
   let override: ModelEffort | undefined // escolhido pelo usuário para o turno atual
+  let disabled = false // usuário escolheu continuar com o effort atual: não sugere mais nesta sessão
 
   on('prompt.submit', async ($, e, next) => {
     override = undefined
-    const skip = e.command || e.isMeta || e.origin.kind !== 'composer' || e.text.trim().length < MIN_CHARS
+    const skip = disabled || e.command || e.isMeta || e.origin.kind !== 'composer' || e.text.trim().length < MIN_CHARS
     if (skip) return next(e)
 
     try {
@@ -42,13 +43,14 @@ export const register: Register = on => {
       })
       const rec = r.isAnswered ? parse(r.text) : null
       if (rec && rec.level !== current) {
-        const keep = `Manter ${current ?? 'atual'}`
+        const keep = `Continuar com effort ${current ?? 'atual'}`
         const use = `Usar ${rec.level}`
         const answer = await $.ui.ask(
           `Sugestão de effort: ${rec.level} (atual: ${current ?? 'desconhecido'}). ${rec.reason} Trocar?`,
           { header: 'Effort', options: [use, keep] },
         )
         if (answer === use) override = rec.level
+        else if (answer === keep) disabled = true // não roda mais nesta sessão
       }
     } catch {
       // diálogo dispensado, sem terminal (-p) ou erro: segue sem mudar
