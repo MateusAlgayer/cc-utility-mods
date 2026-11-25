@@ -1,0 +1,7 @@
+{
+  "name": "fixtures-caracterizacao",
+  "version": "0.1.0",
+  "license": "MIT",
+  "description": "Revisão de approved fixtures em Markdown, com proteção contra aprovação por agentes",
+  "types": "./types/index.d.ts"
+}
